@@ -1,0 +1,25 @@
+{
+  "name": "h5-input",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/h5-input.js",
+  "scripts": {
+    "test": "xxx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thr0w/h5-input.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thr0w/h5-input/issues"
+  },
+  "homepage": "https://github.com/thr0w/h5-input",
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "galenframework-cli": "^1.6.4"
+  }
+}
