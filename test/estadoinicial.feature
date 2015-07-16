@@ -1,36 +1,64 @@
-Cenário: Estado inicial
-  Dado uma estoria com um estado inicial
-  Quando acabar de renderizar [render]
-  E clicar no input
-  Mas nao escrever nada
-  E sair do input
+Funcionalidade: componente para edição de campos
+    Para permitir ao usuario alterar valores de campo
+    Eu, como programador
+    Desejo utilizar o componente h5-input 
+
+Cenário: Renderização do input
+  Dado que eu tenho um estado em uma estoria
+  Quando eu renderizar [render]
   Entao validar [spec]
 
 Exemplos:
 
-#variaveis                          |
-#-------------------------------------
-#spanErro = input[name=CAMPO]~span  |
-#input = input[name='nome']         |
-#-------------------------------------
-
-case               | campo           |  spec_input_sem_foco         |  spec_input_com_foco         |  spec_input_onBlur        
----------------------------------------------------------------------------------------------------------------------------------
-campo obrigatorio  | c1              |  spanErro                    |  spanErro                    |  spanErro    
-  nao preenchido   |                 |    text is:                  |    text is:                  |    text is: Obrigatorio
-                   |                 |    below: input              |    below: input              |    below: input
-                   |                 |                              |                              |    color: red              
----------------------------------------------------------------------------------------------------------------------------------
-@Pendente
-campo obrigatorio  | <h5.input store=mock name="c2" />    |  input[name='nome']~span 
-  ja preenchido    |                                      |    absent
+  #variaveis                          |
+  #-------------------------------------
+  #spanErro = input[name=CAMPO]~span  |
+  #input = input[name='nome']         |
+  #-------------------------------------
+  
+  case               | campo           |  spec_input_sem_foco         |  spec_input_com_foco         |  spec_input_onBlur        
+  ---------------------------------------------------------------------------------------------------------------------------------
+  campo obrigatorio  | c1              |  spanErro                    |  spanErro                    |  spanErro    
+    nao preenchido   |                 |    text is:                  |    text is:                  |    text is: Obrigatorio
+                     |                 |    below: input              |    below: input              |    below: input
+                     |                 |                              |                              |    color: red              
+  ---------------------------------------------------------------------------------------------------------------------------------
+  @Pendente
+  campo obrigatorio  | <h5.input store=mock name="c2" />    |  input[name='nome']~span 
+    ja preenchido    |                                      |    absent
 
   
   
-Cenário: input sem validação em branco
+  
+  
+Cenário: validação ao perder o foco
+    Dado que eu preenchi o h5-input com [texto]
+    Quando eu passar o foco para outro componente
+    Entao o h5-input deve chamar a validação na estoria
+    E esperar pela mensagem [mensagem]
+  
+  
+ # -----------------
+  
+Cenário: validação ao perder o foco sem preencher o campo
+    Dado que eu não preenchi o h5-input
+    Quando eu passar o foco para outro componente
+    Entao o h5-input deve chamar a validação na estoria
+    E esperar pela mensagem [mensagem]
+    
+     
+Cenário: validação ao perder o foco com o campo preenchidos
+    Dado que eu preenchi o h5-input com [texto]
+    Quando eu passar o foco para outro componente
+    Entao o h5-input deve chamar a validação na estoria
+    E esperar pela mensagem [mensagem]
+    
+    
+  
+Cenário: campo sem validação em branco
     Dada uma view renderizada
     Quando eu clicar no campo [campo] para digitar
-    Mas eu nao digitar
+    Mas eu nao digitar *** 
     E eu sair do campo
     Então não haverá alterações com o campo
     
