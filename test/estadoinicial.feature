@@ -26,6 +26,10 @@ campo obrigatorio  | <h5.input store=mock name="c2" />    |  input[name='nome']~
   ja preenchido    |                                      |    absent
 
   
+  
+Cenário: input sem validação 1
+    Dado uma estoria renderizado
+    Quando 
 
 
 
