@@ -27,11 +27,28 @@ campo obrigatorio  | <h5.input store=mock name="c2" />    |  input[name='nome']~
 
   
   
-Cenário: input sem validação 1
-    Dado uma estoria renderizado
-    Quando 
+Cenário: input sem validação em branco
+    Dada uma view renderizada
+    Quando eu clicar no campo [campo] para digitar
+    Mas eu nao digitar
+    E eu sair do campo
+    Então não haverá alterações com o campo
+    
+Cenário: input sem validação preenchido
+    Dada uma view renderizada
+    Quando eu clicar no campo [campo] para digitar
+    E eu digitar [texto]
+    E eu sair do campo
+    Então o campo estará preechido com [texto]
 
-
+Cenário: input com validação em branco
+    Dada uma view renderizada
+    Quando eu clicar no campo [campo] para digitar
+    Mas eu nao digitar
+    E eu sair do campo
+    Então o campo deverá ser validado 
+    E ficará vermelho
+    E aparecerá uma mensagem abaixo do campo escrita [mensagem]
 
 
 
