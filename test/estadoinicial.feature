@@ -26,73 +26,14 @@ Exemplos:
   @Pendente
   campo obrigatorio  | <h5.input store=mock name="c2" />    |  input[name='nome']~span 
     ja preenchido    |                                      |    absent
-
-  
-  
-  
+    
+    
   
 Cenário: validação ao perder o foco
     Dado que eu preenchi o h5-input com [texto]
     Quando eu passar o foco para outro componente
     Entao o h5-input deve chamar a validação na estoria
     E esperar pela mensagem [mensagem]
-  
-  
- # -----------------
-  
-Cenário: validação ao perder o foco sem preencher o campo
-    Dado que eu não preenchi o h5-input
-    Quando eu passar o foco para outro componente
-    Entao o h5-input deve chamar a validação na estoria
-    E esperar pela mensagem [mensagem]
-    
-     
-Cenário: validação ao perder o foco com o campo preenchidos
-    Dado que eu preenchi o h5-input com [texto]
-    Quando eu passar o foco para outro componente
-    Entao o h5-input deve chamar a validação na estoria
-    E esperar pela mensagem [mensagem]
-    
-    
-  
-Cenário: campo sem validação em branco
-    Dada uma view renderizada
-    Quando eu clicar no campo [campo] para digitar
-    Mas eu nao digitar *** 
-    E eu sair do campo
-    Então não haverá alterações com o campo
-    
-Cenário: input sem validação preenchido
-    Dada uma view renderizada
-    Quando eu clicar no campo [campo] para digitar
-    E eu digitar [texto]
-    E eu sair do campo
-    Então o campo estará preechido com [texto]
-
-Cenário: input com validação em branco
-    Dada uma view renderizada
-    Quando eu clicar no campo [campo] para digitar
-    Mas eu nao digitar
-    E eu sair do campo
-    Então o campo deverá ser validado 
-    E ficará vermelho
-    E aparecerá uma mensagem abaixo do campo escrita [mensagem]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Cenário: on blur
   Dado uma estoria com um estado inicial  
@@ -102,17 +43,17 @@ Cenário: on blur
 
 Exemplos:
 
-case               |  campo                               |  spec com foco               | spec sem focus
----------------------------------------------------------------------------------------
-saiu sem preencher |     |  input[name='nome']~span 
-campo obrigatorio  |                                      |    text is: Obrigatório
-                   |                                      |    color: red
-                   |                                      |    below: input[name='nome']
----------------------------------------------------------------------------------------
-
-@Pendente
-campo obrigatorio  | <h5.input store=mock name="c2" />    |  input[name='nome']~span 
-  ja preenchido    |                                      |    absent
+  case               |  campo                               |  spec com foco               | spec sem focus
+  ---------------------------------------------------------------------------------------
+  saiu sem preencher |     |  input[name='nome']~span 
+  campo obrigatorio  |                                      |    text is: Obrigatório
+                     |                                      |    color: red
+                     |                                      |    below: input[name='nome']
+  ---------------------------------------------------------------------------------------
+  
+  @Pendente
+  campo obrigatorio  | <h5.input store=mock name="c2" />    |  input[name='nome']~span 
+    ja preenchido    |                                      |    absent
 
   
     
