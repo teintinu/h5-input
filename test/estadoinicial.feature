@@ -3,10 +3,16 @@ Funcionalidade: componente para edição de campos
     Eu, como programador
     Desejo utilizar o componente h5-input 
 
+
+
+
 Cenário: Renderização do input
   Dado que eu tenho um estado em uma estoria
   Quando eu renderizar [render]
   Entao validar [spec]
+
+
+
 
 Exemplos:
 
