@@ -7,35 +7,42 @@ Cenário: Renderização do input
   Dado que eu tenho um estado em uma estoria
   Quando eu renderizar [render]
   Entao validar [spec]
+
+Exemplos: 
+    case               | campo           |  spec_input                 
+    ------------------------------------------------------------------------
+    input no estado    | c1              |  input[name='nome']    
+    inicial            |                 |    text is:      
+                       |                 |  html/body
+                       |                 |    contains: input[name='nome']            
+    ------------------------------------------------------------------------
+    input no estado    | c2              |  input[name='nome']    
+    inicial            |                 |    text is:      
+                       |                 |  html/body
+                       |                 |    contains: input[name='nome']            
+                       |                 |  input[name='nome']~spam           
+                       |                 |    text is: Obrigatorio            
+                       |                 |    color: red            
+    ------------------------------------------------------------------------  
   
-Exemplos:
-  case               | campo           |  spec_input_sem_foco         |  spec_input_com_foco         |  spec_input_onBlur        
-    ---------------------------------------------------------------------------------------------------------------------------------
-    campo obrigatorio  | c1              |  spanErro                    |  spanErro                    |  spanErro    
-      nao preenchido   |                 |    text is:                  |    text is:                  |    text is: Obrigatorio
-                       |                 |    below: input              |    below: input              |    below: input
-                       |                 |                              |                              |    color: red              
-    ---------------------------------------------------------------------------------------------------------------------------------
   
-Cenário: validação ao perder o foco
-    Dado que eu preenchi o h5-input com [texto]
-    Quando eu passar o foco para outro componente
-    Entao o h5-input deve chamar a validação na estoria
-    E esperar pela mensagem [mensagem]
-Cenário: on blur
-  Dado uma estoria com um estado inicial  
-  Quando escrever [texto]
-  E sair do input
-  Entao 
-Exemplos:
-  case               |  campo                               |  spec com foco               | spec sem focus
-  ---------------------------------------------------------------------------------------
-  saiu sem preencher |     |  input[name='nome']~span 
-  campo obrigatorio  |                                      |    text is: Obrigatório
-                     |                                      |    color: red
-                     |                                      |    below: input[name='nome']
-  ---------------------------------------------------------------------------------------
-  
-  @Pendente
-  campo obrigatorio  | <h5.input store=mock name="c2" />    |  input[name='nome']~span 
-    ja preenchido    |                                      |    absent
+#Cenário: validação ao perder o foco
+#    Dado que eu preenchi o h5-input com [texto]
+#    Quando eu passar o foco para outro componente
+#    Entao o h5-input deve chamar a validação na estoria
+#    E esperar pela mensagem [mensagem]
+#  
+#Exemplos: 
+#    case               | campo           |  spec_input_vazio            |  spec_input_com_palavra      |  spec_input_com_numero       |  
+#    -----------------------------------------------------------------------------------------------------------------------------------
+#    Validação de campo | c1              |  input[name='nome']~span     |  input[name='nome']~span     |  input[name='nome']~span     | 
+#    requerido ao       |                 |    text is: Obrigatório      |    absent                    |    absent                    |  
+#    perder foco        |                 |    below: input[name='nome'] |                              |                              |   
+#                       |                 |    color: red                |                              |                              |         
+#    -----------------------------------------------------------------------------------------------------------------------------------
+#    ----------------------------------------------------------------------------------------------------------------------------------
+#    Validação de       | c1              |  input[name='nome']~span     |  input[name='nome']~span     |  input[name='nome']~span           
+#    tipo de dado ao    | type='number'   |    absent                    |    text is: Inválido         |    absent                    
+#    perder foco        |                 |                              |    below: input[name='nome'] |                               
+#                       |                 |                              |    color: red                |                            
+#    ----------------------------------------------------------------------------------------------------------------------------------
