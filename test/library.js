@@ -1,23 +1,22 @@
-.given('que tenho uma estoria com um estado inicial', function () {
+.given('que eu tenho um estado em uma estoria', function () {
     mock = {
         editing: {
-            c1: '',
-            c2: 'val'
+            c1: ''
         },
         editing_errors: {
             c1: 'Obrigatório'
         }
     }
-});
-when('acabar de renderizar [render]', function (render) {
+})
+.when('eu renderizar [render]', function (render) {
     var view = 'react.create ' + render;
     filewrite('gerado/app/view.js', view);
 
     < h5.input store = mock name = "CAMPO" / >
 
         run(webpack);
-}).
-then('Entao validar [spec]', function (spec) {
+})
+.then('Entao validar [spec]', function (spec) {
     filewrite('gerado/galen/view.spec', spec)
-    run(galel);
+    run(galen);
 })
