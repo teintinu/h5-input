@@ -3,27 +3,29 @@ Funcionalidade: componente para edição de campos
     Eu, como programador
     Desejo utilizar o componente h5-input 
 
-Cenário: Renderização do input
-  Dado que eu tenho um estado em uma estoria
-  Quando eu renderizar [render]
+Cenário: Renderização do h5.input
+  Dado que o estado da estória é [estado]
+  Quando eu renderizar o h5.input
   Entao validar [spec]
 
 Exemplos: 
-    case               | campo           |  spec_input                 
-    ------------------------------------------------------------------------
-    input no estado    | c1              |  input[name='nome']    
-    inicial            |                 |    text is:      
-                       |                 |  html/body
-                       |                 |    contains: input[name='nome']            
-    ------------------------------------------------------------------------
-    input no estado    | c2              |  input[name='nome']    
-    inicial            |                 |    text is:      
-                       |                 |  html/body
-                       |                 |    contains: input[name='nome']            
-                       |                 |  input[name='nome']~spam           
-                       |                 |    text is: Obrigatorio            
-                       |                 |    color: red            
-    ------------------------------------------------------------------------  
+    estado              |  spec
+    --------------------------------------------------------
+    fields: {           |  input[name='campo']    
+      campo: {value:''} |    text is:      
+     }                  |  html/body
+                        |    contains: input[name='nome']            
+    ------------------------------------------------------
+
+
+#    editing: {         |  input[name='nome']    
+#     campo: {          |    text is:      
+#       value: '',      |  html/body
+#       error:          |    contains: input[name='nome']            
+#        'Obrigatorio'  |  input[name='nome']~spam           
+#     }                 |    text is: Obrigatorio            
+#                       |    color: red            
+#    ------------------------------------------------------  
   
   
 #Cenário: validação ao perder o foco
