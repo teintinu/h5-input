@@ -13,12 +13,7 @@ module.exports = {
                 loader: "style!css!less"
             },
             {
-                test: /\.jsx?$/,
-                loaders: ['babel'], // 'jsx?harmony&stripTypes', 'flowcheck'],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.html$/,
+                test: /\.js$/,
                 loaders: ['babel'], // 'jsx?harmony&stripTypes', 'flowcheck'],
                 exclude: /node_modules/
             },

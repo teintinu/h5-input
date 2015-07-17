@@ -7,17 +7,17 @@ window.hsession = {
 var mock_store = {
     fields: {
         name: {
-            floatingLabelText: "Nome",
+            labelText: "Nome",
             hintText: "Digite seu nome",
-            //            validate: [V.required],
-            error: 'obrigatorio'
+            error: ''
         }
     }
 }
 
 function createViewTest() {
     return React.createElement(HInput, {
-        store: mock_store
+        store: mock_store,
+        field: 'name'
     })
 }
 var x = createViewTest();
