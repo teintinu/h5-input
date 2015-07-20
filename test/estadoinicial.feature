@@ -1,21 +1,21 @@
 Funcionalidade: componente para edição de campos
-    Para permitir ao usuario alterar valores de campo
-    Eu, como programador
-    Desejo utilizar o componente h5-input 
+  Para permitir ao usuario alterar valores de campo
+  Eu, como programador
+  Desejo utilizar o componente h5-input
 
 Cenário: Renderização do h5.input
   Dado que o estado da estória é [estado]
   Quando eu renderizar o h5.input
   Entao validar [spec]
 
-Exemplos: 
-    estado              |  spec
-    --------------------------------------------------------
-    fields: {           |  input[name='campo']    
-      campo: {value:''} |    text is:      
-     }                  |  html/body
-                        |    contains: input[name='nome']            
-    ------------------------------------------------------
+  Exemplos:
+    estado              | spec
+    ----------------------------------------------------
+    fields: {           | input[name='campo']
+      campo: {value:''} |   text is:
+    }                   | html/body
+                        |   contains: input[name='nome']
+    ----------------------------------------------------
 
 
 #    editing: {         |  input[name='nome']    
@@ -26,8 +26,7 @@ Exemplos:
 #     }                 |    text is: Obrigatorio            
 #                       |    color: red            
 #    ------------------------------------------------------  
-  
-  
+
 #Cenário: validação ao perder o foco
 #    Dado que eu preenchi o h5-input com [texto]
 #    Quando eu passar o foco para outro componente
@@ -48,3 +47,6 @@ Exemplos:
 #    perder foco        |                 |                              |    below: input[name='nome'] |                               
 #                       |                 |                              |    color: red                |                            
 #    ----------------------------------------------------------------------------------------------------------------------------------
+
+
+# testes do colSpan e testes do RowSpan

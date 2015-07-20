@@ -1,5 +1,5 @@
 import React from 'react';
-import HInput from '../../../h5-input/h5-input';
+import HInput from './h5-input/h5-input';
 
 window.hsession = {
     language: 'pt_br'
@@ -7,19 +7,23 @@ window.hsession = {
 var mock_store = {
     fields: {
         name: {
-            labelText: "Nome",
-            hintText: "Digite seu nome",
-            error: ''
+//            labelText: "Nome",
+//            hintText: "Digite seu nome",
+            error: '',
+            validations: []
         }
     }
 }
 
-function createViewTest() {
-    return React.createElement(HInput, {
-        store: mock_store,
-        field: 'name'
-    })
-}
-var x = createViewTest();
+var ViewInput = React.createClass({
+    render: function () {
+        return React.createElement(HInput, {
+            store: mock_store,
+            field: 'name',
+            rowSpan: [1],
+            colSpan: [1]
+        })
+    }
+});
 
-React.render( < x / > , document.body);
+React.render( <table> <tr> <ViewInput/> </ tr> </ table > , document.body);
