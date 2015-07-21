@@ -4,22 +4,14 @@ import HInput from '../../../src/h5-input/h5-input';
 window.hsession = {
     language: 'pt_br'
 };
-var mock_store = {
-    fields: {
-        name: {
-//            labelText: "Nome",
-//            hintText: "Digite seu nome",
-            error: '',
-            validations: []
-        }
-    }
-}
+
+var mock_store =  { fields: $$$fields$$$ };
 
 var ViewInput = React.createClass({
     render: function () {
         return React.createElement(HInput, {
             store: mock_store,
-            field: 'name',
+            field: 'campo',
             rowSpan: [1],
             colSpan: [1]
         })

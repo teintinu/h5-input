@@ -9,13 +9,13 @@ Cenário: Renderização do h5.input
   Entao validar [spec]
 
   Exemplos:
-    estado              | spec
-    ----------------------------------------------------
-    fields: {           | input[name='name']
-      campo: {value:''} |   text is:
-    }                   | html/body
-                        |   contains: input[name='name']
-    ----------------------------------------------------
+    fields              | spec
+    ---------------------------------------
+    campo: {value:''}   | input
+                        |   text is:
+                        | body
+                        |   contains: input
+    ---------------------------------------
 
 
 #    editing: {         |  input[name='nome']
