@@ -1,15 +1,10 @@
-===========================================
-name        css  input[name="name"]
-body        xpath   /html/body
-btn         id   btn
-===========================================
+===============================
+input   css    input[name="name"]
+body    xpath  /html/body
+===============================
 
 body:
-  contains: name
-  contains: btn
+  contains: input
   
-name: 
-  text is: 
-  
-btn
-  text is: Button
+input: 
+  text is:

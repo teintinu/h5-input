@@ -24,7 +24,7 @@ module.exports = (function () {
                 '    render: function () {',
                 '        return React.createElement(HInput, {',
                 '            store: {'+mock_estado+'},',
-                '            field: "campo"',
+                '            field: "name"',
                 '        })',
                 '    }',
                 '});'
@@ -37,6 +37,7 @@ module.exports = (function () {
         .then('Entao validar $SPEC', function (spec, next) {
             filewrite('gerado/galen/view.spec', spec)
             run(galen);
+            next();
         })
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import HInput from './h5-input/h5-input';
+import HInput from '../../../src/h5-input/h5-input';
 
 window.hsession = {
     language: 'pt_br'
