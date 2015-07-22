@@ -1,10 +1,6 @@
 ===============================
-input   css    input[name="name"]
+input   css    input[name="campo"]
 body    xpath  /html/body
 ===============================
 
-body:
-  contains: input
-  
-input: 
-  text is:
+$$$spec$$$

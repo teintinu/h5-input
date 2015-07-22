@@ -22,6 +22,7 @@ var HInput = React.createClass({
         var propsInput = {};
         propsInput.errorText = field.error ? field.error : ''
         propsInput.name = this.props.field;
+        propsInput.value = field.value;
         propsInput.onFocus = this.focus;
         propsInput.hintText = field.hintText;
         propsInput.className = 'h_input';

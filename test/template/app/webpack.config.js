@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+//var webpack = require('webpack');
 
 module.exports = {
     entry: __dirname + "/input.view.js",
@@ -34,8 +34,8 @@ module.exports = {
         colors: true
     },
     plugins: [
-        new webpack.optimize.MinChunkSizePlugin({
-            minChunkSize: 100000000
-        })
+//        new webpack.optimize.MinChunkSizePlugin({
+//            minChunkSize: 100000000
+//        })
     ]
 };
