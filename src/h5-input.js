@@ -1,6 +1,6 @@
 var React = require('react');
-require('./input.less');
-require('./style.less');
+// require('./input.less');
+//require('./style.less');
 
 var HInput = React.createClass({
     propTypes: {

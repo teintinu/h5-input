@@ -3,19 +3,24 @@ Funcionalidade: componente para edição de campos
   Eu, como programador
   Desejo utilizar o componente h5-input
 
-Cenário: Renderização do h5.input {caso}
+Cenário: Renderização do h5.input [caso]
   Dado que o estado da estória é [estado]
   Quando eu renderizar o [caso]
   Então validar [spec]
 
   Exemplos:
-    caso            | estado            | spec
-    -------------------------------------------------------
-    valor em branco | campo: {value:''} | input
-                    |                   |   text is:
-                    |                   | body
-                    |                   |   contains: input
-    -------------------------------------------------------
+    caso            | estado              | spec
+    ---------------------------------------------------------
+    valor_em_branco | campo: {value:''}   | input
+                    |                     |   text is:
+                    |                     | body
+                    |                     |   contains: input
+    ---------------------------------------------------------
+    valor_xx        | campo: {value:'xx'} | input
+                    |                     |   text is: xx
+                    |                     | body
+                    |                     |   contains: input
+    ---------------------------------------------------------
 
 
 #    editing: {         |  input[name='nome']

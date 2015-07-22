@@ -9,17 +9,17 @@ module.exports = function (library, expect, h5_test) {
       next();
 
     })
-    .when('eu renderizar o (.*)', function (caso, next) {
+    .when('eu renderizar (.*)', function (caso, next) {
       h5_test.replace('___caso___', caso);
-      h5_test.generate('app/index.html', 'app/input.view.js', 'app/webpack.config.js');
-      //h5_test.server(); // webpack ...
-      next();
+      h5_test.file('app/input.view.js');
+      h5_test.serve('app/index.html');
+      h5_test.pack('app', next);
     })
 
   .then('validar ([^\u0000]*)', function (spec, next) {
     expect(spec).to.be.an('string');
     h5_test.replace('$$$spec$$$', spec);
-    h5_test.generate('test/input.spec');
+    h5_test.check('test/input.spec');
     // chamar o galen
     next();
   });
