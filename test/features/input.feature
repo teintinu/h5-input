@@ -9,18 +9,20 @@ Cenário: Renderização do h5.input [caso]
   Então validar [spec]
 
   Exemplos:
-    caso            | estado              | spec
-    ---------------------------------------------------------
-    valor_em_branco | campo: {value:''}   | input
-                    |                     |   text is:
-                    |                     | body
-                    |                     |   contains: input
-    ---------------------------------------------------------
-    valor_xx        | campo: {value:'xx'} | input
-                    |                     |   text is: xx
-                    |                     | body
-                    |                     |   contains: input
-    ---------------------------------------------------------
+    caso            | estado                    | spec
+    ---------------------------------------------------------------
+    valor_em_branco | campo: {value:''}         | input
+                    |                           |   text is:
+                    |                           | body
+                    |                           |   contains: input
+    ---------------------------------------------------------------
+    valor_xx        | campo: {value:'xx'}       | input
+                    |                           |   text is: xx
+                    |                           | body
+                    |                           |   contains: input
+    ---------------------------------------------------------------
+    label_text      | campo: {labelText:'name'} | label
+                    |                           |   text is: name
 
 
 #    editing: {         |  input[name='nome']
