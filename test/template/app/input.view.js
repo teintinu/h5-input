@@ -7,7 +7,11 @@ window.hsession = {
     language: 'pt_br'
 };
 
-var mock_store =  { fields: { ___fields___ } };
+var mock_store = {
+    fields: {
+        ___fields___
+    }
+};
 
 var ViewInput = React.createClass({
     render: function () {
@@ -15,9 +19,9 @@ var ViewInput = React.createClass({
             store: mock_store,
             field: 'campo',
             rowSpan: [1],
-            colSpan: [1]
+            colSpan: [1],
         })
     }
 });
 
-React.render( <table> <tr> <ViewInput/> </ tr> </ table > , document.body);
+React.render( < table > < tr > < ViewInput / > < / tr> </table > , document.body);
