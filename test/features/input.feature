@@ -9,23 +9,47 @@ Cenário: Renderização do h5.input [caso]
   Então validar [spec]
 
   Exemplos:
-    caso            | estado                             | spec
-    -------------------------------------------------------------------------
-    valor_em_branco | campo: {value:''}                  | input
-                    |                                    |   text is:
-                    |                                    | body
-                    |                                    |   contains: input
-    -------------------------------------------------------------------------
-    valor_xx        | campo: {value:'xx'}                | input
-                    |                                    |   text is: xx
-                    |                                    | body
-                    |                                    |   contains: input
-    -------------------------------------------------------------------------
-    label_text      | campo: {labelText:'name'}          | label
-                    |                                    |   text is: name
-    -------------------------------------------------------------------------
-    input_com_foco  | _focus: 'campo', campo: {value:''} | body
-                    |                                    |   contains: hr_foco
+    caso                      | estado                                                   | spec
+    -----------------------------------------------------------------------------------------------------------
+    valor_em_branco           | campo: {value:''}                                        | input
+                              |                                                          |   text is:
+                              |                                                          | body
+                              |                                                          |   contains: input
+    -----------------------------------------------------------------------------------------------------------
+    valor_xx                  | campo: {value:'xx'}                                      | input
+                              |                                                          |   text is: xx
+                              |                                                          | body
+                              |                                                          |   contains: input
+    -----------------------------------------------------------------------------------------------------------
+    label_text                | campo: {labelText:'name'}                                | label_semFoco
+                              |                                                          |   text is: name
+    -----------------------------------------------------------------------------------------------------------
+    input_com_foco            | _focus: 'campo', campo: {value:''}                       | body
+                              |                                                          |   contains: hr_foco
+    -----------------------------------------------------------------------------------------------------------
+    input_com_foco_hintText   | _focus: 'campo', campo: {value:'', hintText:'Digite xx'} | body
+                              |                                                          |   contains: hr_foco
+                              |                                                          | hintText
+                              |                                                          |   text is: Digite xx
+    -----------------------------------------------------------------------------------------------------------
+    input_com_foco_e_value_xx | _focus: 'campo', campo: {value:'xx'}                     | body
+                              |                                                          |   contains: hr_foco
+                              |                                                          | input
+                              |                                                          |   text is:  xx
+    -----------------------------------------------------------------------------------------------------------
+    foco_value_xx_labelText   | _focus: 'campo', campo: {value:'xx', labelText:'name'}   | body
+                              |                                                          |   contains: hr_foco
+                              |                                                          | input
+                              |                                                          |   text is:  xx
+                              |                                                          | label_comFoco
+                              |                                                          |   text is: name
+    -----------------------------------------------------------------------------------------------------------
+    input_erro                | campo: {error:'requerido'}                               | labelError
+                              |                                                          |   text is: requerido
+
+
+
+
 
 
 #    editing: {         |  input[name='nome']
