@@ -9,24 +9,25 @@ Cenário: Renderização do h5.input [caso]
   Então validar [spec]
 
   Exemplos:
-    caso            | estado                              | spec
+    caso            | estado                             | spec
     -------------------------------------------------------------------------
-    valor_em_branco | campo: {value:''}                   | input
-                    |                                     |   text is:
-                    |                                     | body
-                    |                                     |   contains: input
+    valor_em_branco | campo: {value:''}                  | input
+                    |                                    |   text is:
+                    |                                    | body
+                    |                                    |   contains: input
     -------------------------------------------------------------------------
-    valor_xx        | campo: {value:'xx'}                 | input
-                    |                                     |   text is: xx
-                    |                                     | body
-                    |                                     |   contains: input
+    valor_xx        | campo: {value:'xx'}                | input
+                    |                                    |   text is: xx
+                    |                                    | body
+                    |                                    |   contains: input
     -------------------------------------------------------------------------
-    label_text      | campo: {labelText:'name'}           | label
-                    |                                     |   text is: name
+    label_text      | campo: {labelText:'name'}          | label
+                    |                                    |   text is: name
     -------------------------------------------------------------------------
-    hint_text       | campo: {hintText:'digite seu nome'} |
-                    |                                     |
-                    |                                     |
+    input_com_foco  | _focus: 'campo', campo: {value:''} | body
+                    |                                    |   contains: hr_foco
+
+
 #    editing: {         |  input[name='nome']
 #     campo: {          |    text is:
 #       value: '',      |  html/body

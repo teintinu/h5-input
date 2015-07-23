@@ -1,5 +1,5 @@
 var React = require('react');
- require('./input.less');
+require('./input.less');
 //require('./style.less');
 
 var HInput = React.createClass({
@@ -18,6 +18,7 @@ var HInput = React.createClass({
 
 
         var field = this.props.store.fields[this.props.field];
+        var h_focus = this.props.store.fields._focus;
 
         var propsInput = {};
         propsInput.errorText = field.error ? field.error : ''
@@ -27,6 +28,7 @@ var HInput = React.createClass({
         propsInput.hintText = field.hintText;
         propsInput.className = 'h_input';
         propsInput.ref = 'h_input_' + this.props.field;
+        propsInput.autoFocus = h_focus == this.props.field ? true : false
 
         propsInput.onChange = this.changed;
         if (field.validations && field.validations.length)
