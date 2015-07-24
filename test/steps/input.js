@@ -11,7 +11,10 @@ module.exports = function (library, expect, h5_test) {
             h5_test.file('app/input.view.js');
             h5_test.serve('app/index.html');
             h5_test.pack('app', next);
-        }).then('validar ([^\u0000]*)', function (spec, next) {
+        }).when('eu sair do campo sem preencher', function (next) {
+            h5_test.run('test/blur.js');
+            next();
+        }).then('deverá ser exibido ([^\u0000]*)', function (spec, next) {
             expect(spec).to.be.an('string');
             h5_test.replace('___spec___', spec);
             h5_test.check('test/input.spec');

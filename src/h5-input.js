@@ -11,38 +11,38 @@ var HInput = React.createClass({
     },
     getInitialState: function () {
         return {
-            focus: false
+            focused: false
         };
     },
     render: function () {
 
 
         var field = this.props.store.fields[this.props.field];
-        var h_focus = this.props.store.fields._focus;
+        var h_autofocus = this.props.store.fields._autofocus;
 
         var propsInput = {};
         propsInput.errorText = field.error ? field.error : ''
         propsInput.name = this.props.field;
         propsInput.value = field.value;
-        propsInput.onFocus = this.focus;
+        propsInput.onFocus = this.focusHandler;
         propsInput.hintText = field.hintText;
         propsInput.className = 'h_input';
         propsInput.ref = 'h_input_' + this.props.field;
-        propsInput.autoFocus = h_focus == this.props.field ? true : false
+        propsInput.autoFocus = h_autofocus == this.props.field ? true : false
 
         propsInput.onChange = this.changed;
         if (field.validations && field.validations.length)
-            propsInput.onBlur = this.blur;
+            propsInput.onBlur = this.blurHandler;
 
         var propstd = {
             colSpan: this.props.colSpan ? this.props.colSpan : null,
             rowSpan: this.props.rowSpan ? this.props.rowSpan : null,
             className: 'h_input_td',
-            onTouchTap: this.focus
+            onTouchTap: this.focusHandler
         };
 
-        var classNameLabel = this.state.focus || propsInput.value || propsInput.value != '' ?
-            'h_Input_LabelComValue ' + (this.state.focus ? propsInput.errorText ? 'erro' : 'focus' : propsInput.errorText ? 'erro' : '') :
+        var classNameLabel = this.state.focused || propsInput.value || propsInput.value != '' ?
+            'h_Input_LabelComValue ' + (this.state.focused ? propsInput.errorText ? 'erro' : 'focus' : propsInput.errorText ? 'erro' : '') :
             'h_Input_LabelSemValue ' + (propsInput.errorText ? 'erro' : '');
 
 
@@ -52,7 +52,7 @@ var HInput = React.createClass({
                     className: classNameLabel
                 }, [field.labelText]),
 
-                !propsInput.value && this.state.focus || propsInput.value == '' && this.state.focus ?
+                !propsInput.value && this.state.focused || propsInput.value == '' && this.state.focused ?
                 React.createElement('label', {
                     className: ('h_Input_LabelSemValue ' + (propsInput.errorText ? 'erro' : ''))
                 }, [field.hintText]) : null,
@@ -63,7 +63,7 @@ var HInput = React.createClass({
                     className: 'h_input_hr ' + (propsInput.errorText ? 'h_input_hr_error' : '')
                 }),
 
-                this.state.focus ? React.createElement('hr', {
+                this.state.focused ? React.createElement('hr', {
                     className: 'h_input_hr_focus ' + (propsInput.errorText ? 'h_input_hr_focus_error' : '')
                 }) : null,
 
@@ -79,19 +79,22 @@ var HInput = React.createClass({
         this.props.store.fields[editing].value = ev.target.value;
         this.setState({});
     },
-    focus: function (e) {
+    focusHandler: function (e) {
         this.setState({
-            focus: true
-        })
-        var input = React.findDOMNode(this.refs['h_input_' + this.props.field]);
-        input.focus();
+                focused: true
+            })
+            //        var input = React.findDOMNode(this.refs['h_input_' + this.props.field]);
+            //        input.focus();
     },
-    blur: function (ev) {
+    blurHandler: function (ev) {
         var editing = this.props.field;
         this.props.store.fields[editing].value = ev.target.value;
-        this.props.store.fields[editing].validate(this.props.field, ev.target.value);
+        var validations = this.props.store.fields[editing].validations;
+        validations.forEach(function (func) {
+            func(this.props.field, ev.target.value)
+        }.bind(this));
         this.setState({
-            focus: false
+            focused: false
         });
     }
 

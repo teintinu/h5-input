@@ -7,7 +7,16 @@ window.hsession = {
     language: 'pt_br'
 };
 
+function requerido(field, value) {
+    if (!value) {
+        mock_store.fields[field].error = 'requerido';
+
+    } else {
+        mock_store.fields[field].error = null;
+    }
+}
 var mock_store = {
+
     fields: {
         ___fields___
     }

@@ -1,7 +1,7 @@
 //var webpack = require('webpack');
 
 module.exports = {
-    entry: __dirname + "/input.view.js",
+    entry: __dirname +"/input.view.js",
     output: {
         path: __dirname,
         filename: "bundle.js"
