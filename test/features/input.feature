@@ -50,22 +50,45 @@
                               |                                                              |   color scheme: 100% #FF0000
 
 
-
-
-  Cenário: validação ao sair do campo
+  Cenário: validação ao sair do campo [caso]
   Dado que o estado da estória é [estado]
   Quando eu renderizar o [caso]
-  E eu sair do campo sem preencher
+  E eu sair do campo
   Entao deverá ser exibido [spec]
 
-  #Então executar a validação do campo
+  Exemplos:
+    caso      | estado                                   | spec
+    -----------------------------------------------------------------------------------
+    sem valor | _autofocus: 'campo', campo: {value:'',   | labelError
+              |   validations: [requerido]               |   text is: requerido
+              | }                                        | hr_error
+              |                                          |   color scheme: 100% #FF0000
+    -----------------------------------------------------------------------------------
+    com valor | _autofocus: 'campo', campo: {value:'xx', | labelError
+              |   validations: [requerido]               |   absent
+              | }                                        | hr_error
+              |                                          |   absent
+              |                                          | input
+              |                                          |   text is:  xx
+
+
+
+  Cenário: validação geral do h5-input
+  Dado que o estado da estória é [estado]
+  Quando eu renderizar o h5-input
+  Entao deverá ser exibido [spec]
+  E eu digitar no campo
+  Entao deverá ser exibido [spec_2]
+  E eu sair do campo
+  Entao deverá ser exibido [spec_3]
 
   Exemplos:
-    caso             | estado                                 | spec
-    ----------------------------------------------------------------------------------------
-     campo requerido | _autofocus: 'campo', campo: {value:'', | labelError
-                     |   validations: [requerido]             |   text is: requerido
-                     | }                                      | hr_error
-                     |                                        |   color scheme: 100% #FF0000
-
+    estado                                 | spec       | spec_2        | spec_3
+    -----------------------------------------------------------------------------------
+    _autofocus: 'campo', campo: {value:'', | labelError | labelError    | labelError
+      validations: [requerido]             |   absent   |   absent      |   absent
+    }                                      | hr_error   | hr_error      | hr_error
+                                           |   absent   |   absent      |   absent
+                                           | input      | input         | input
+                                           |   text is: |   text is: xx |   text is: xx
 
