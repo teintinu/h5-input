@@ -73,22 +73,37 @@
 
 
 
-  Cenário: validação geral do h5-input
-  Dado que o estado da estória é [estado]
-  Quando eu renderizar o h5-input
-  Entao deverá ser exibido [spec]
-  E eu digitar no campo
-  Entao deverá ser exibido [spec_2]
-  E eu sair do campo
-  Entao deverá ser exibido [spec_3]
-
-  Exemplos:
-    estado                                 | spec       | spec_2        | spec_3
-    -----------------------------------------------------------------------------------
-    _autofocus: 'campo', campo: {value:'', | labelError | labelError    | labelError
-      validations: [requerido]             |   absent   |   absent      |   absent
-    }                                      | hr_error   | hr_error      | hr_error
-                                           |   absent   |   absent      |   absent
-                                           | input      | input         | input
-                                           |   text is: |   text is: xx |   text is: xx
-
+#  Cenário: validação geral do h5-input
+#  Dado que o estado da estória é [estado]
+#  Quando eu renderizar o h5-input
+#  Entao deverá ser exibido [spec]
+#  E eu digitar no campo
+#  Entao deverá ser exibido [spec_2]
+#  E eu sair do campo
+#  Entao deverá ser exibido [spec_3]
+#
+#  Exemplos:
+#    estado                                 | spec
+#    ----------------------------------------------------
+#    _autofocus: 'campo', campo: {value:'', | labelError
+#      validations: [requerido]             |   absent
+#    }                                      | hr_error
+#                                           |   absent
+#                                           | input
+#                                           |   text is:
+#    ------------------------------------------------------
+#    _autofocus: 'campo', campo: {value:'', |
+#        validations: [requerido]           |
+#    }                                      |
+#
+#
+#
+#
+#| spec_2        | spec_3
+#-------------------------------
+#| labelError    | labelError
+#|   absent      |   absent
+#| hr_error      | hr_error
+#|   absent      |   absent
+#| input         | input
+#|   text is: xx |   text is: xx
