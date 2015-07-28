@@ -15,6 +15,13 @@ function requerido(field, value) {
         mock_store.fields[field].error = null;
     }
 }
+
+function numerico(field, value) {
+    if (typeof (value) != Number)
+        mock_store.fields[field].error = 'Necessario ser numerico';
+    else
+        mock_store.fields[field].error = null;
+}
 var mock_store = {
 
     fields: {

@@ -73,37 +73,39 @@
 
 
 
-#  Cenário: validação geral do h5-input
-#  Dado que o estado da estória é [estado]
-#  Quando eu renderizar o h5-input
-#  Entao deverá ser exibido [spec]
-#  E eu digitar no campo
-#  Entao deverá ser exibido [spec_2]
-#  E eu sair do campo
-#  Entao deverá ser exibido [spec_3]
-#
-#  Exemplos:
-#    estado                                 | spec
-#    ----------------------------------------------------
-#    _autofocus: 'campo', campo: {value:'', | labelError
-#      validations: [requerido]             |   absent
-#    }                                      | hr_error
-#                                           |   absent
-#                                           | input
-#                                           |   text is:
-#    ------------------------------------------------------
-#    _autofocus: 'campo', campo: {value:'', |
-#        validations: [requerido]           |
-#    }                                      |
-#
-#
-#
-#
-#| spec_2        | spec_3
-#-------------------------------
-#| labelError    | labelError
-#|   absent      |   absent
-#| hr_error      | hr_error
-#|   absent      |   absent
-#| input         | input
-#|   text is: xx |   text is: xx
+  Cenário: validação da escrita no h5-input [caso]
+  Dado que o estado da estória é [estado]
+  Quando eu renderizar o h5-input
+  E eu digitar no campo [text]
+  E eu sair do campo
+  Entao deverá ser exibido [spec]
+
+
+  Exemplos:
+    caso                            | estado                                 | text | spec
+    --------------------------------------------------------------------------------------------------------------------
+    sem validação                   | _autofocus: 'campo', campo: {value:''} | test | input
+                                    |                                        |      |  text is: test
+                                    |                                        |      |
+    --------------------------------------------------------------------------------------------------------------------
+    com validação                   | _autofocus: 'campo', campo: {value:'', | test | input
+                                    |  validations: [requerido]              |      |  text is: test
+                                    | }                                      |      | labelError
+                                    |                                        |      |   absent
+                                    |                                        |      | hr_error
+                                    |                                        |      |   absent
+    --------------------------------------------------------------------------------------------------------------------
+    com validação e texto em branco | _autofocus: 'campo', campo: {value:'', |      | input
+                                    |   validations: [requerido]             |      |  text is:
+                                    | }                                      |      | labelError
+                                    |                                        |      |   text is: requerido
+                                    |                                        |      | hr_error
+                                    |                                        |      |   color scheme: 100% #FF0000
+    --------------------------------------------------------------------------------------------------------------------
+    com validação numerica          | _autofocus: 'campo', campo: {value:'', | test | input
+                                    |   validations: [numerico]              |      |  text is: test
+                                    | }                                      |      | labelError
+                                    |                                        |      |   text is: Necessario ser numerico
+                                    |                                        |      | hr_error
+                                    |                                        |      |   color scheme: 100% #FF0000
+    --------------------------------------------------------------------------------------------------------------------

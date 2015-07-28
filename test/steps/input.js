@@ -19,7 +19,8 @@ module.exports = function (library, expect, h5_test) {
             h5_test.replace('___spec___', spec);
             h5_test.check('test/input.spec');
             next();
-        }).then('eu digitar no campo', function (next) {
+        }).then('eu digitar no campo ([^\u0000]*)', function (text, next) {
+            h5_test.replace('___text___', text);
             h5_test.run('test/type.js');
             next();
         });

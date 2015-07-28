@@ -4,4 +4,4 @@ this.InputBlur = function (driver) {
     });
 };
 var page = new InputBlur(driver);
-page.input.typeText('xx');
+page.input.typeText('___text___');
