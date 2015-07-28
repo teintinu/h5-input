@@ -7,48 +7,79 @@
   Dado que o estado da estória é [estado]
   Quando eu renderizar o [caso]
   Então deverá ser exibido [spec]
-
+  #combinações value, hintText e Labeltext
   Exemplos:
-    caso                      | estado                                                       | spec
-    -----------------------------------------------------------------------------------------------------------------------
-    valor_em_branco           | campo: {value:''}                                            | input
-                              |                                                              |   text is:
-                              |                                                              | body
-                              |                                                              |   contains: input
-    -----------------------------------------------------------------------------------------------------------------------
-    valor_xx                  | campo: {value:'xx'}                                          | input
-                              |                                                              |   text is: xx
-                              |                                                              | body
-                              |                                                              |   contains: input
-    -----------------------------------------------------------------------------------------------------------------------
-    label_text                | campo: {labelText:'name'}                                    | label_semFoco
-                              |                                                              |   text is: name
-    -----------------------------------------------------------------------------------------------------------------------
-    input_com_foco            | _autofocus: 'campo', campo: {value:''}                       | body
-                              |                                                              |   contains: hr_foco
-    -----------------------------------------------------------------------------------------------------------------------
-    input_com_foco_hintText   | _autofocus: 'campo', campo: {value:'', hintText:'Digite xx'} | body
-                              |                                                              |   contains: hr_foco
-                              |                                                              | hintText
-                              |                                                              |   text is: Digite xx
-    -----------------------------------------------------------------------------------------------------------------------
-    input_com_foco_e_value_xx | _autofocus: 'campo', campo: {value:'xx'}                     | body
-                              |                                                              |   contains: hr_foco
-                              |                                                              | input
-                              |                                                              |   text is:  xx
-    -----------------------------------------------------------------------------------------------------------------------
-    foco_value_xx_labelText   | _autofocus: 'campo', campo: {value:'xx', labelText:'name'}   | body
-                              |                                                              |   contains: hr_foco
-                              |                                                              | input
-                              |                                                              |   text is:  xx
-                              |                                                              | label_comFoco
-                              |                                                              |   text is: name
-    -----------------------------------------------------------------------------------------------------------------------
-    input_erro                | campo: {error:'requerido'}                                   | labelError
-                              |                                                              |   text is: requerido
-                              |                                                              | hr_error
-                              |                                                              |   color scheme: 100% #FF0000
-
+    caso                                      | estado                                                       | spec
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    valor_em_branco                           | campo: {value:''}                                            | input
+                                              |                                                              |   text is:
+                                              |                                                              | body
+                                              |                                                              |   contains: input
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    valor_xx                                  | campo: {value:'xx'}                                          | input
+                                              |                                                              |   text is: xx
+                                              |                                                              | body
+                                              |                                                              |   contains: input
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    label_text                                | campo: {labelText:'name'}                                    | label_semFoco
+                                              |                                                              |   text is: name
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    label_text && value                       | campo: {labelText:'name', value:'xx'}                        | label_semFoco
+                                              |                                                              |   text is: name
+                                              |                                                              | input
+                                              |                                                              |   text is: xx
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    label_text && hintText                    | campo: {labelText:'name', value:'', hintText:'Digite xx'}    | input
+                                              |                                                              |   text is:
+                                              |                                                              | hintText
+                                              |                                                              |   text is: name
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    label_text && value && hintText           | campo: {labelText:'name', value:'xx', hintText:'Digite xx'}  | label_semFoco
+                                              |                                                              |   text is: name
+                                              |                                                              | input
+                                              |                                                              |   text is: xx
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    input_com_foco                            | _autofocus: 'campo', campo: {value:''}                       | body
+                                              |                                                              |   contains: hr_foco
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    input_com_foco_hintText                   | _autofocus: 'campo', campo: {value:'', hintText:'Digite xx'} | body
+                                              |                                                              |   contains: hr_foco
+                                              |                                                              | hintText
+                                              |                                                              |   text is: Digite xx
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    input_com_foco_e_value_xx                 | _autofocus: 'campo', campo: {value:'xx'}                     | body
+                                              |                                                              |   contains: hr_foco
+                                              |                                                              | input
+                                              |                                                              |   text is:  xx
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    input_com_foco_e_labelText_e_hintText     | _autofocus: 'campo', campo: {value:'',                       | body
+                                              |     hintText:'Digite xx', labelText:'name'                   |   contains: hr_foco
+                                              |   }                                                          | input
+                                              |                                                              |   text is:
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    input_com_foco_value_labelText_e_hintText | _autofocus: 'campo', campo: {value:'xx',                     | body
+                                              |     hintText:'Digite xx', labelText:'name'                   |   contains: hr_foco
+                                              |   }                                                          | input
+                                              |                                                              |   text is: xx
+                                              |                                                              | label_comFoco
+                                              |                                                              |   text is: name
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    foco_value_xx_labelText                   | _autofocus: 'campo', campo: {value:'xx', labelText:'name'}   | body
+                                              |                                                              |   contains: hr_foco
+                                              |                                                              | input
+                                              |                                                              |   text is:  xx
+                                              |                                                              | label_comFoco
+                                              |                                                              |   text is: name
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    input_erro                                | campo: {error:'requerido'}                                   | labelError
+                                              |                                                              |   text is: requerido
+                                              |                                                              | hr_error
+                                              |                                                              |   color scheme: 100% #FF0000
+    ---------------------------------------------------------------------------------------------------------------------------------------
+    desabilitado                              | campo: {disabled: 'Campo indisponivel'}                      | input
+                                              |                                                              |   text is:
+                                              |                                                              | body
+                                              |                                                              |   contains: input
 
   Cenário: validação ao sair do campo [caso]
   Dado que o estado da estória é [estado]
@@ -71,7 +102,7 @@
               |                                          | input
               |                                          |   text is:  xx
 
-
+#verificar o labelText
 
   Cenário: validação da escrita no h5-input [caso]
   Dado que o estado da estória é [estado]
@@ -109,3 +140,9 @@
                                     |                                        |      | hr_error
                                     |                                        |      |   color scheme: 100% #FF0000
     --------------------------------------------------------------------------------------------------------------------
+
+#validaçao e formatação enquanto digita de campos numericos, datas, cpf, cep...
+# cenario varios campos
+# implementar icones
+@pendente
+#Cenário: Icones

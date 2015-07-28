@@ -29,6 +29,7 @@ var HInput = React.createClass({
         propsInput.className = 'h_input';
         propsInput.ref = 'h_input_' + this.props.field;
         propsInput.autoFocus = h_autofocus == this.props.field ? true : false
+        propsInput.disabled, propsInput.title = field.disabled || (field.value && field.hintText) || '';
 
         propsInput.onChange = this.changed;
         if (field.validations && field.validations.length)

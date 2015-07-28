@@ -39,5 +39,4 @@ var ViewInput = React.createClass({
         })
     }
 });
-
 React.render( < table > < tr > < ViewInput / > < / tr> </table > , document.body);
