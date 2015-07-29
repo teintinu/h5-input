@@ -33,10 +33,11 @@ var HInput = React.createClass({
         propsInput.disabled = field.disabled;
         propsInput.title = field.disabled || (field.value && field.hintText);
 
-
         propsInput.onChange = this.changed;
         if (field.validations && field.validations.length)
             propsInput.onBlur = this.blurHandler;
+        else(this.props.field == 'cpf')
+        propsInput.onBlur = this.cpf;
 
         var propstd = {
             colSpan: this.props.colSpan ? this.props.colSpan : null,
@@ -89,10 +90,8 @@ var HInput = React.createClass({
     },
     focusHandler: function (e) {
         this.setState({
-                focused: true
-            })
-            //        var input = React.findDOMNode(this.refs['h_input_' + this.props.field]);
-            //        input.focus();
+            focused: true
+        })
     },
     blurHandler: function (ev) {
         var editing = this.props.field;
@@ -114,6 +113,29 @@ var HInput = React.createClass({
             }
         }
         return ret;
+    },
+    cpf: function (ev) {
+        var value = ev.target.value
+        var soma;
+        var resto;
+        soma = 0;
+        if (value == "00000000000") return false;
+        for (var i = 1; i <= 9; i++)
+            soma = soma + parseInt(value.substring(i - 1, i)) * (11 - i);
+        resto = (soma * 10) % 11;
+        if ((resto == 10) || (resto == 11))
+            resto = 0;
+        if (resto != parseInt(value.substring(9, 10)))
+            this.props.store.fields.cpf.error = 'cpf invalido';
+        soma = 0;
+        for (var i = 1; i <= 10; i++)
+            soma = soma + parseInt(value.substring(i - 1, i)) * (12 - i);
+        resto = (soma * 10) % 11;
+        if ((resto == 10) || (resto == 11))
+            resto = 0;
+        if (resto != parseInt(value.substring(10, 11)))
+            this.props.store.fields.cpf.error = 'cpf invalido';
+        this.setState({});
     }
 });
 
