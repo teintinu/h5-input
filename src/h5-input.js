@@ -23,13 +23,16 @@ var HInput = React.createClass({
         var propsInput = {};
         propsInput.errorText = field.error ? field.error : ''
         propsInput.name = this.props.field;
+        propsInput.type = field.type;
         propsInput.value = field.value;
         propsInput.onFocus = this.focusHandler;
         propsInput.hintText = field.hintText;
         propsInput.className = 'h_input';
         propsInput.ref = 'h_input_' + this.props.field;
         propsInput.autoFocus = h_autofocus == this.props.field ? true : false
-        propsInput.disabled, propsInput.title = field.disabled || (field.value && field.hintText) || '';
+        propsInput.disabled = field.disabled;
+        propsInput.title = field.disabled || (field.value && field.hintText);
+
 
         propsInput.onChange = this.changed;
         if (field.validations && field.validations.length)
@@ -77,7 +80,11 @@ var HInput = React.createClass({
     },
     changed: function (ev) {
         var editing = this.props.field;
-        this.props.store.fields[editing].value = ev.target.value;
+        var ok = this[this.props.store.fields[editing].type](ev.target.value);
+        this.props.store.fields[editing].value =
+            ok ?
+            ev.target.value :
+            ev.target.value.substr(0, ev.target.value.length - 1);
         this.setState({});
     },
     focusHandler: function (e) {
@@ -97,8 +104,17 @@ var HInput = React.createClass({
         this.setState({
             focused: false
         });
+    },
+    numbers: function (value) {
+        var ret = false;
+        for (var i = 0; i < 10; i++) {
+            if (value.charAt(value.length - 1).indexOf(i) != -1) {
+                ret = true;
+                break;
+            }
+        }
+        return ret;
     }
-
 });
 
 module.exports = HInput;

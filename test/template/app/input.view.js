@@ -17,18 +17,25 @@ function requerido(field, value) {
 }
 
 function numerico(field, value) {
-    if (typeof (value) != Number)
-        mock_store.fields[field].error = 'Necessario ser numerico';
-    else
-        mock_store.fields[field].error = null;
-}
+        if (typeof (value) != Number)
+            mock_store.fields[field].error = 'Necessario ser numerico';
+        else
+            mock_store.fields[field].error = null;
+    }
+    //    var mock_store = {
+    //
+    //        fields: {
+    //            ___fields___
+    //        }
+    //    };
 var mock_store = {
-
     fields: {
-        ___fields___
+        campo: {
+            type: 'numbers',
+            labelText: 'Data'
+        }
     }
 };
-
 var ViewInput = React.createClass({
     render: function () {
         return React.createElement(HInput, {
