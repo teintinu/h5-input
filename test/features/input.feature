@@ -102,7 +102,6 @@
               |                                          | input
               |                                          |   text is:  xx
 
-#verificar o labelText
 
   Cenário: validação da escrita no h5-input [caso]
   Dado que o estado da estória é [estado]
