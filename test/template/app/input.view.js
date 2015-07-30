@@ -30,6 +30,10 @@ function numerico(field, value) {
     //    };
 var mock_store = {
     fields: {
+        phone: {
+            type: 'numbers',
+            labelText: 'Phone'
+        },
         cpf: {
             type: 'numbers',
             labelText: 'Cpf'
@@ -40,7 +44,7 @@ var ViewInput = React.createClass({
     render: function () {
         return React.createElement(HInput, {
             store: mock_store,
-            field: 'cpf',
+            field: 'phone',
             rowSpan: [1],
             colSpan: [1],
         })

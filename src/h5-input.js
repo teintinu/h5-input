@@ -36,8 +36,8 @@ var HInput = React.createClass({
         propsInput.onChange = this.changed;
         if (field.validations && field.validations.length)
             propsInput.onBlur = this.blurHandler;
-        else(this.props.field == 'cpf')
-        propsInput.onBlur = this.cpf;
+        else if (this.props.field == 'cpf')
+            propsInput.onBlur = this.cpf;
 
         var propstd = {
             colSpan: this.props.colSpan ? this.props.colSpan : null,
@@ -118,15 +118,27 @@ var HInput = React.createClass({
         var value = ev.target.value
         var soma;
         var resto;
+        var ret;
         soma = 0;
-        if (value == "00000000000") return false;
+        if (value.length != 11 ||
+            value == "00000000000" ||
+            value == "11111111111" ||
+            value == "22222222222" ||
+            value == "33333333333" ||
+            value == "44444444444" ||
+            value == "55555555555" ||
+            value == "66666666666" ||
+            value == "77777777777" ||
+            value == "88888888888" ||
+            value == "99999999999")
+            return this.props.store.fields.cpf.error = 'cpf invalido';
         for (var i = 1; i <= 9; i++)
             soma = soma + parseInt(value.substring(i - 1, i)) * (11 - i);
         resto = (soma * 10) % 11;
         if ((resto == 10) || (resto == 11))
             resto = 0;
         if (resto != parseInt(value.substring(9, 10)))
-            this.props.store.fields.cpf.error = 'cpf invalido';
+            return this.props.store.fields.cpf.error = 'cpf invalido';
         soma = 0;
         for (var i = 1; i <= 10; i++)
             soma = soma + parseInt(value.substring(i - 1, i)) * (12 - i);
@@ -134,7 +146,8 @@ var HInput = React.createClass({
         if ((resto == 10) || (resto == 11))
             resto = 0;
         if (resto != parseInt(value.substring(10, 11)))
-            this.props.store.fields.cpf.error = 'cpf invalido';
+            return this.props.store.fields.cpf.error = 'cpf invalido';
+        return this.props.store.fields.cpf.error = '';
         this.setState({});
     }
 });
