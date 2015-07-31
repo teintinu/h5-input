@@ -70,6 +70,13 @@
                                               |                                                              |   text is:  xx
                                               |                                                              | label_comFoco
                                               |                                                              |   text is: name
+#    -----------------------------------------------------------------------------------------------------------------------------------------
+#    foco_value_xx_hintText                    | _autofocus: 'campo', campo: {value:'xx', hintText:'Digite xx'} | body
+#                                              |                                                                |   contains: hr_foco
+#                                              |                                                                | input
+#                                              |                                                                |   text is:  xx
+#                                              |                                                                | label_comFoco
+#                                              |                                                                |   text is: name
     ---------------------------------------------------------------------------------------------------------------------------------------
     input_erro                                | campo: {error:'requerido'}                                   | labelError
                                               |                                                              |   text is: requerido
