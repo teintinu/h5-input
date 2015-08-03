@@ -16,7 +16,7 @@ module.exports = function (library, expect, h5_test) {
             next();
         }).then('deverá ser exibido ([^\u0000]*)', function (spec, next) {
             expect(spec).to.be.an('string');
-            h5_test.replace('___spec___', spec);
+            h5_test.replace('___spec___', spec.replace(/\n/g, '\n    '));
             h5_test.check('test/input.spec');
             next();
         }).then('eu digitar no campo ([^\u0000]*)', function (text, next) {
