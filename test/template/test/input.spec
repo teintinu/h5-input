@@ -10,5 +10,5 @@
   hr_error  css  hr[class='h_input_hr h_input_hr_error']
 
 
-= Test Spec Section = 
-   ___spec___
+= Tests section = 
+    ___spec___
