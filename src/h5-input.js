@@ -81,11 +81,12 @@ var HInput = React.createClass({
     },
     changed: function (ev) {
         var editing = this.props.field;
-        var ok = this[this.props.store.fields[editing].type](ev.target.value);
-        this.props.store.fields[editing].value =
-            ok ?
-            ev.target.value :
-            ev.target.value.substr(0, ev.target.value.length - 1);
+        //        var ok = this[this.props.store.fields[editing].type](ev.target.value);
+        //        this.props.store.fields[editing].value =
+        //            ok ?
+        //            ev.target.value :
+        //            ev.target.value.substr(0, ev.target.value.length - 1);
+        this.props.store.fields[editing].value = ev.target.value;
         this.setState({});
     },
     focusHandler: function (e) {
