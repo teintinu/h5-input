@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "../lib/",
+        "sourceMap": true
+    },
+    "buildOnSave": true,
+    "compileOnSave": true,
+    "filesGlob": [
+        "../typings/react/react.d.ts",
+        "./**/*.ts"
+    ],
+    "files": [
+        "./h5-input.ts"
+    ]
+}
