@@ -5,7 +5,7 @@
 - property rowSpan: number = 1
 - property colSpan: number = 1
 
-- var meta = store[field];
+- var meta: EditStoreField = store[field]
 
 td(
   class= 'h_input_td',
@@ -13,14 +13,14 @@ td(
   rowSpan=rowSpan,
   onTouchTap= focusHandler)
 
-  label( 
+  label(
     class = {
       h_Input_LabelComValue: has_focus() || has_value(),
       h_Input_LabelSemValue: !(has_focus() || has_value()),
-      'focus': has_focus() && !has_error(),
-      'erro': has_error(),
+      focus: has_focus() && !has_error(),
+      erro: has_error(),
     })= meta.labelText
-  
+
   if !has_value() && has_focus()
     label(
          class={
@@ -30,22 +30,22 @@ td(
       )= meta.hintText
 
   input(
-    name = field,
-    type = meta.type,
-    value = meta.value,
-    title = field.disabled || field.hintText,
-    hintText = meta.hintText,
-    errorText = meta.error
-    class = 'h_input',
-    ref = 'h_input_' + field,
-    autoFocus = store.autofocus == field,
-    disabled: meta.disabled,
-    onFocus = focusHandler,
-    onChange = changeHandler,
-    onBlur = blurHandler;
-    )  
+      name = field,
+      type = meta.type,
+      value = meta.value,
+      title = field.disabled || field.hintText,
+      hintText = meta.hintText,
+      errorText = meta.error
+      class = 'h_input',
+      ref = 'h_input_' + field,
+      autoFocus = store.autofocus == field,
+      disabled= meta.disabled,
+      onFocus = focusHandler,
+      onChange = changeHandler,
+      onBlur = blurHandler  
+    )
 
-  hr({class=
+  hr(class={
       h_input_hr: true,
       h_input_hr_error: has_error()
     })
@@ -58,20 +58,20 @@ td(
 
   if (has_error())
     span(class= 'h_input_labelError')= meta.errorText
-  ])
 
-.script
+
+script.
 
   function changeHandler(ev) {
-    var editing = this.props.field;        
     meta.value = ev.target.value;
     this.setState({});
   }
-  
+
   function focusHandler(e) {
     store.focus = meta;
+    this.setState({});
   }
-  
+
   function blurHandler(ev) {
     if (store.focus == meta)
       store.focus=null;
@@ -82,12 +82,12 @@ td(
   }
 
   function has_focus(){
-    return store.focus = meta
+    return store.focus == meta
   }
   function has_error(){
-    return !!propsInput.errorText
+    return !!meta.errorText
   }
 
   function has_value(){
-    return propsInput.value && propsInput.value != ''
+    return !!meta.value
   }
