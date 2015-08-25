@@ -1,11 +1,12 @@
 - require('./input.less');
+- import {EditStore, EditStoreField} from 'EditStore'
 
 - property store: EditStore
 - property field: string
 - property rowSpan: number = 1
 - property colSpan: number = 1
 
-- var meta: EditStoreField = store[field]
+- var meta: EditStoreField = store.fields[field]
 
 td(
   class= 'h_input_td',
@@ -33,12 +34,12 @@ td(
       name = field,
       type = meta.type,
       value = meta.value,
-      title = field.disabled || field.hintText,
+      title = meta.disabled || meta.hintText,
       hintText = meta.hintText,
-      errorText = meta.error
+      errorText = meta.errorText,
       class = 'h_input',
       ref = 'h_input_' + field,
-      autoFocus = store.autofocus == field,
+      autoFocus = store.focus == meta,
       disabled= meta.disabled,
       onFocus = focusHandler,
       onChange = changeHandler,
@@ -62,17 +63,17 @@ td(
 
 script.
 
-  function changeHandler(ev) {
+  function changeHandler(ev: any) {
     meta.value = ev.target.value;
     this.setState({});
   }
 
-  function focusHandler(e) {
+  function focusHandler() {
     store.focus = meta;
     this.setState({});
   }
 
-  function blurHandler(ev) {
+  function blurHandler(ev: any) {
     if (store.focus == meta)
       store.focus=null;
     meta.value = ev.target.value;

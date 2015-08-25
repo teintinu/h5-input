@@ -1,12 +1,17 @@
 import {
     createClass,
-    createElement
+    createElement,
+    ReactNode
 } from 'react';
+import {
+    EditStore,
+    EditStoreField
+} from 'EditStore';
 require('./input.less');
-var src/h5-input.jade = function () {
+var HInput = function () {
     var store: EditStore, field: string, rowSpan: number, colSpan: number, meta: EditStoreField;
     return createClass({
-        displayName: 'src/h5-input.jade',
+        displayName: 'HInput',
         render: function () {
             var _this = this;
             return createElement('td', {
@@ -15,7 +20,7 @@ var src/h5-input.jade = function () {
                 onTouchTap: focusHandler,
                 className: 'h_input_td'
             }, function () {
-                var $ret = [];
+                var $ret: ReactNode[] = [];
                 $ret.push(createElement('label', {
                     className: [
                         has_focus() || has_value() ? 'h_Input_LabelComValue' : '',
@@ -36,11 +41,11 @@ var src/h5-input.jade = function () {
                     name: field,
                     type: meta.type,
                     value: meta.value,
-                    title: field.disabled || field.hintText,
+                    title: meta.disabled || meta.hintText,
                     hintText: meta.hintText,
-                    errorText: meta.error,
+                    errorText: meta.errorText,
                     ref: 'h_input_' + field,
-                    autoFocus: store.autofocus == field,
+                    autoFocus: store.focus == meta,
                     disabled: meta.disabled,
                     onFocus: focusHandler,
                     onChange: changeHandler,
@@ -66,15 +71,15 @@ var src/h5-input.jade = function () {
                 }
                 return $ret;
             }());
-            function changeHandler(ev) {
+            function changeHandler(ev: any) {
                 meta.value = ev.target.value;
                 _this.setState({});
             }
-            function focusHandler(e) {
+            function focusHandler() {
                 store.focus = meta;
                 _this.setState({});
             }
-            function blurHandler(ev) {
+            function blurHandler(ev: any) {
                 if (store.focus == meta)
                     store.focus = null;
                 meta.value = ev.target.value;
@@ -96,8 +101,8 @@ var src/h5-input.jade = function () {
             field = this.props.field;
             rowSpan = this.props.rowSpan || 1;
             colSpan = this.props.colSpan || 1;
-            meta = store[field];
+            meta = store.fields[field];
         }
     });
 }();
-module.exports = src/h5-input.jade;
+export default HInput;
