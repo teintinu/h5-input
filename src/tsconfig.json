@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "commonjs",
+    "declaration": true,
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "target": "es5"
+  },
+  "files": [
+    "/trabalho/h5-build/lib/typings/node/node.d.ts",
+    "/trabalho/h5-build/lib/typings/react/react.d.ts",
+    "/trabalho/h5-build/lib/typings/bluebird/bluebird.d.ts",
+    "/trabalho/h5-build/lib/node_modules/h5-flux/lib/h5flux.d.ts",
+    "HInput.ts",
+    "editstore.ts"
+  ]
+}
