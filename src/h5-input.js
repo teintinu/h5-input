@@ -31,6 +31,7 @@ var HInput = React.createClass({
         propsInput.ref = 'h_input_' + this.props.field;
         propsInput.autoFocus = h_autofocus == this.props.field ? true : false
         propsInput.disabled = field.disabled;
+        propsInput.onBlur = this.onBlur;
         propsInput.title = field.disabled || (field.value && field.hintText);
 
         propsInput.onChange = this.changed;
@@ -52,7 +53,7 @@ var HInput = React.createClass({
 
 
         return (
-            React.createElement('td', propstd, [
+            React.createElement('div', propstd, [
                 React.createElement('label', {
                     className: classNameLabel
                 }, [field.labelText]),
@@ -150,6 +151,9 @@ var HInput = React.createClass({
             return this.props.store.fields.cpf.error = 'cpf invalido';
         return this.props.store.fields.cpf.error = '';
         this.setState({});
+    },
+    onBlur : function(){
+        this.setState({focused:false});
     }
 });
 

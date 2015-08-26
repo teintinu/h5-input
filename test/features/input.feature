@@ -97,6 +97,7 @@
   Exemplos:
     caso      | estado                                   | spec
     ----------------------------------------------------------------------------------
+    @only
     sem valor | _autofocus: 'campo', campo: {value:'',   | labelError:
               |   validations: [requerido]               |   text is "requerido"
               | }                                        | hr_error:

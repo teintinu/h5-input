@@ -25,7 +25,7 @@ function numerico(field, value) {
 var mock_store = {
 
     fields: {
-        ___fields___
+        campo: {labelText:'name', value:'', hintText:'Digite xx'}
     }
 };
 //var mock_store = {
@@ -45,9 +45,7 @@ var ViewInput = React.createClass({
         return React.createElement(HInput, {
             store: mock_store,
             field: 'campo',
-            rowSpan: [1],
-            colSpan: [1]
         })
     }
 });
-React.render( < table > < tr > < ViewInput / > < / tr> </table > , document.body);
+React.render(< ViewInput / >, document.body);
